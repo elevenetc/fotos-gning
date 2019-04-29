@@ -1,10 +1,9 @@
-package com.elevenetc.fotosgning
+package com.elevenetc.fotosgning.home
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import com.elevenetc.fotosgning.R
 import com.elevenetc.fotosgning.search.PhotoSearchFragment
-import com.elevenetc.fotosgning.search.flickr.FlickrService
 
 class HomeActivity : AppCompatActivity() {
 
@@ -18,10 +17,5 @@ class HomeActivity : AppCompatActivity() {
                     .add(R.id.home_container, PhotoSearchFragment())
                     .commit()
         }
-
-//        Thread({
-//            val search = FlickrService().search("")
-//            Log.d("search", search[0].url)
-//        }).start()
     }
 }

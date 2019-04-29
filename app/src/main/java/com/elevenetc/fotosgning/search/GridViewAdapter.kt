@@ -3,11 +3,21 @@ package com.elevenetc.fotosgning.search
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
+import android.widget.ImageView
+import com.elevenetc.fotosgning.common.bitmaps.BitmapsLoader
 
-class GridViewAdapter(photos: List<Photo>) : BaseAdapter() {
+class GridViewAdapter(
+        photos: List<Photo>,
+        private val photoSize: Int,
+        private val bitmapsLoader:BitmapsLoader
+) : BaseAdapter() {
 
-    val photos = photos.toMutableList()
+    private val photos = photos.toMutableList()
+
+    fun clear() {
+        photos.clear()
+        notifyDataSetChanged()
+    }
 
     fun append(photos: List<Photo>) {
         this.photos.addAll(photos)
@@ -16,28 +26,34 @@ class GridViewAdapter(photos: List<Photo>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
-        var view: TextView
+        val view: ImageView
 
         if (convertView == null) {
-            view = TextView(parent.context)
+            view = ImageView(parent.context).apply {
+                layoutParams = ViewGroup.LayoutParams(photoSize, photoSize)
+            }
         } else {
-            view = convertView as TextView
+            view = convertView as ImageView
         }
 
-        view.text = photos[position].url
+        val photo = photos[position]
+
+        bitmapsLoader.load(photo.url, view)
 
         return view
     }
 
     override fun getItem(position: Int): Any {
-        return ""
+        return photos[position]
     }
 
     override fun getItemId(position: Int): Long {
-        return 666
+        return 13
     }
 
     override fun getCount(): Int {
         return photos.size
     }
+
+
 }
