@@ -47,6 +47,8 @@ class PhotoSearchViewModel(
 
     private fun getPage(query: String, page: Int): Observable<PhotoSearchResult> {
 
+        //TODO: add handling of last page case
+
         if (query.isEmpty()) {
             this.page = firstPage
             updateSearchState(SearchState.IDLE)

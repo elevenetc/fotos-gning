@@ -1,5 +1,7 @@
 # Photo search app - Fotosøgning
 
+App for searching photos.
+
 ## Setup (optional)
 
 Configure `FLICKR_API_KEY` in `build.gradle` 
@@ -23,3 +25,6 @@ Package-by-feature is used as package structure
 ![GitHub Logo](/docs/di-graph.png)
 ## Search feature
 ![GitHub Logo](/docs/feature-photo-search.png)
+
+## TODO
+See `TODO: ...` in the source code for issues or unimplemented cases.
